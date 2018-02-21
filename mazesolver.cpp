@@ -5,10 +5,10 @@
 #include <cstdio>
 #include <set>
 #include <queue>
+#include <logictoolbox/ResultTree.h>
 
 #include "mazesolver.h"
 #include "maze.h"
-
 
 const double FLT_MAX = 3.402823e+38;
 const int obstacle = 1;
@@ -34,6 +34,9 @@ bool MazeSolver::solve()
         break;
     case SolverType::ASTAR:
         return solveMazeWithAstar(1,1);
+        break;
+    case SolverType::MODAL_LOGIC:
+        return solveMazeWithModalLogic();
         break;
     default:
         break;
@@ -213,4 +216,17 @@ bool MazeSolver::solveMazeWithSimpleBoolean(int x, int y)
         return true;
 
     return false;
+}
+
+bool MazeSolver::solveMazeWithModalLogic(){
+
+    Expression expression = Expression("!x");
+    ResultTree resultTree = ResultTree(maze->getMazeUniverse(),expression);
+
+    auto results = resultTree.getFinalResult();
+
+    if(results[maze->getMazeUniverse()->getWorlds().at(0)]){
+        qDebug() << "Solution found!";
+        return true;
+    }else return  false;
 }

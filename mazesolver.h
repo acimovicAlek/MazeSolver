@@ -15,7 +15,8 @@ public:
         {
             BACKTRACKING,
             ASTAR,
-            SIMPLEBOOLEAN
+            SIMPLEBOOLEAN,
+            MODAL_LOGIC
         };
 private:
     Maze* maze;
@@ -34,6 +35,7 @@ public:
     bool solveMazeWithBacktracking(int x, int y);
     bool solveMazeWithAstar(int x, int y);
     bool solveMazeWithSimpleBoolean(int x, int y);
+    bool solveMazeWithModalLogic();
 };
 
 #endif // MAZESOLVER_H

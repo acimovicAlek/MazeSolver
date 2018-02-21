@@ -28,3 +28,16 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui
+
+
+
+LIBS += -L$$PWD/../../../Documents/LogicToolbox/lib/ -llogictoolbox
+
+INCLUDEPATH += $$PWD/../../../Documents/LogicToolbox/include
+DEPENDPATH += $$PWD/../../../Documents/LogicToolbox/include
+
+LIBS += -L$$PWD/../../../../../usr/lib/ -lcdt
+LIBS += -L$$PWD/../../../../../usr/lib/ -lcgraph
+LIBS += -L$$PWD/../../../../../usr/lib/ -lgvc
+LIBS += -L$$PWD/../../../../../usr/lib/ -lpathplan
+

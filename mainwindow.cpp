@@ -34,6 +34,10 @@ void MainWindow::on_generateMaze_btn_clicked()
     try
     {
         maze = new Maze(width,height);
+        qDebug() << maze->getMazeUniverse()->getWorlds().size();
+        for(auto i: maze->getMazeUniverse()->getWorlds()){
+            qDebug() << "World: " << i->getName().c_str() << "Variables: " << i->getVariables().at(0).getName().c_str() << " - " << i->getVariables().at(0).getValue() << "\n";
+        }
         mazeSolver = new MazeSolver(maze, MazeSolver::SolverType::BACKTRACKING);
     }
     catch (const std::exception& e)
@@ -78,10 +82,17 @@ void MainWindow::on_solve_btn_clicked()
         mazeSolver->setSolver(MazeSolver::SolverType::BACKTRACKING);
         break;
 
-    case 1:
+    case 3:
         qDebug() << ui->solver_combo->currentText();
         //maze->solveMazeWithAstar(1,1);
         mazeSolver->setSolver(MazeSolver::SolverType::ASTAR);
+        //qDebug() << "result: " << res;
+        break;
+
+    case 1:
+        qDebug() << ui->solver_combo->currentText();
+        //maze->solveMazeWithAstar(1,1);
+        mazeSolver->setSolver(MazeSolver::SolverType::MODAL_LOGIC);
         //qDebug() << "result: " << res;
         break;
 
