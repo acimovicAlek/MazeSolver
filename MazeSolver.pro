@@ -31,13 +31,14 @@ FORMS += \
 
 
 
-LIBS += -L$$PWD/../../../Documents/LogicToolbox/lib/ -llogictoolbox
-
-INCLUDEPATH += $$PWD/../../../Documents/LogicToolbox/include
-DEPENDPATH += $$PWD/../../../Documents/LogicToolbox/include
 
 LIBS += -L$$PWD/../../../../../usr/lib/ -lcdt
 LIBS += -L$$PWD/../../../../../usr/lib/ -lcgraph
 LIBS += -L$$PWD/../../../../../usr/lib/ -lgvc
 LIBS += -L$$PWD/../../../../../usr/lib/ -lpathplan
 
+
+unix:!macx: LIBS += -L$$PWD/../../../../../usr/local/lib/ -llogictoolbox
+
+INCLUDEPATH += $$PWD/../../../../../usr/local/include/logictoolbox
+DEPENDPATH += $$PWD/../../../../../usr/local/include/logictoolbox
